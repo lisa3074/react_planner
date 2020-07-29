@@ -50,21 +50,29 @@
   font-size: 45px;
   line-height: 48px;
   text-transform: lowercase;
-  /*   text-align: center; */
   margin: 0;
   color: black;
   padding-left: 1.5rem;
   font-weight: 200;
   height: 95%;
 }
-ul {
-  overflow: scroll;
-  height: calc(100% - 5rem);
+.scrollList > ul {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: auto;
+
+  @supports (-webkit-touch-callout: none) {
+    height: 80vh;
+    max-height: 100%;
+  }
+
+  @supports not (-webkit-touch-callout: none) {
+    height: 100%;
+    max-height: var(--px);
+  }
 }
 @media (max-width: 600px) {
   .scrollList {
     position: absolute;
-    /*  width: 90%; */
     height: 100%;
     background-color: #fff;
     overflow-x: hidden;

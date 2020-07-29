@@ -84,7 +84,16 @@ select {
 }
 .addForm {
   padding: 1rem 2rem;
-  height: 100%;
+
+  @supports (-webkit-touch-callout: none) {
+    height: 80vh;
+    max-height: 100%;
+  }
+
+  @supports not (-webkit-touch-callout: none) {
+    height: 100%;
+    max-height: var(--px);
+  }
 }
 .colorLabel {
   padding: 0 0 2rem 0;
