@@ -5,6 +5,7 @@ import Option from "muicss/lib/react/option";
 import Select from "muicss/lib/react/select";
 import Panel from "muicss/lib/react/panel";
 import { expand } from "./modules/expand";
+import { closeExpand } from "./modules/closeExpand";
 
 //one way is to destructure the card array with curly brackets at this level ({ card })
 //if the last level sent the array here: card = {card}
@@ -23,7 +24,10 @@ export default function Card(props) {
   function onClickMove(list) {
     props.moveCard({ _id: props._id, list: list }, props._id, list);
   }
-
+  function clickOnCard() {
+    closeExpand(props._id);
+    expand(props._id);
+  }
   console.log(props.color);
 
   const colorCat = {
@@ -68,7 +72,9 @@ export default function Card(props) {
         id={"a" + props._id}
         key={props._id}
         style={posiionRel}>
-        <div className="expandCard" onClick={() => expand(props._id)}>
+        <div
+          className="expandCard"
+          onClick={/* () => expand(props._id) */ clickOnCard}>
           <header>
             <h2 className="smallerFont">{props.title}</h2>
             <div style={posiionAb}>
@@ -80,7 +86,9 @@ export default function Card(props) {
             Added: {props.added.substring(0, 10)}{" "}
           </p>
           <p className="fade_out hide">Assigned to: {props.assignedTo}</p>
-          <p className="description fade_out hide">{props.description}</p>
+          <p className="description scrollbar fade_out hide">
+            {props.description}
+          </p>
           <p className="hideAlways fade_out hide">{props.color}</p>
           <p className="hideAlways fade_out hide">{props.list}</p>
         </div>

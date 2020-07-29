@@ -3,7 +3,7 @@ export function expand(theId) {
   console.log("the class: " + theId);
   const theIdClass = `#a${theId}`;
   const theIdClassName = `.a${theId}`;
-  console.log(theIdClass);
+
   document.querySelectorAll(theIdClass + "> div > p").forEach((p) => {
     setTimeout(() => {
       p.classList.toggle("hide");
