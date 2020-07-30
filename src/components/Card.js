@@ -22,7 +22,12 @@ export default function Card(props) {
   };
 
   function onClickMove(list) {
-    props.moveCard({ _id: props._id, list: list }, props._id, list);
+    props.moveCard(
+      { _id: props._id, list: list, timeStamp: Date.now() },
+      props._id,
+      list,
+      Date.now()
+    );
   }
   function clickOnCard() {
     closeExpand(props._id);

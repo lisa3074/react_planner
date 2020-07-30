@@ -52,6 +52,7 @@ export default function Form(props) {
       color: color,
       category: category,
       description: description,
+      timeStamp: Date.now(),
     });
     setTitle("");
     setAssigned("");

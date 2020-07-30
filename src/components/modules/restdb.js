@@ -1,7 +1,7 @@
 const restDB = "https://frontend-22d4.restdb.io/rest/yakapp";
 const apiKey = "5e9581a6436377171a0c234f";
 
-export function getCards(callback) {
+/* export function getCards(callback) {
   fetch(restDB, {
     method: "get",
     headers: {
@@ -12,8 +12,21 @@ export function getCards(callback) {
   })
     .then((e) => e.json())
     .then((data) => callback(data));
-}
+} */
 
+export async function getCards(callback) {
+  let response = await fetch(restDB, {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "x-apikey": apiKey,
+    },
+  });
+  let data = await response.json();
+  const sortedData = data.sort((a, b) => a.timeStamp - b.timeStamp);
+  console.log(sortedData);
+  callback(sortedData);
+}
 export async function postCard(callback, data, cards) {
   console.log("submitted db1", data);
   const postData = JSON.stringify(data);
@@ -42,13 +55,17 @@ export async function deleteCard(_id) {
   });
 }
 
-export async function moveCard(callback, payload, _id, list, cards) {
-  const newCards = cards.filter((c) => {
+export async function moveCard(callback, payload, _id, list, cards, timeStamp) {
+  // console.log(timeStamp);
+  let newCards = cards.filter((c) => {
     if (c._id === _id) {
       c.list = list;
     }
     return c;
   });
+  newCards = newCards.sort((a, b) => a.timeStamp - b.timeStamp);
+  console.log(newCards);
+
   const postData = JSON.stringify(payload);
   console.log(postData);
   await fetch(`${restDB}/${_id}`, {
@@ -60,6 +77,7 @@ export async function moveCard(callback, payload, _id, list, cards) {
     },
     body: postData,
   });
+
   callback(newCards);
 }
 async function editCard(

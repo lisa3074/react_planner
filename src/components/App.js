@@ -19,7 +19,6 @@ import "../sass/navigation.scss";
 export default function App() {
   const [cards, setCards] = useState([]);
   scroll();
-
   /*   function onFormSubmit(data) {
     console.log("submitted", data);
     //We make a new const (array) called "cards" (above).
@@ -45,9 +44,9 @@ export default function App() {
     RestDb.deleteCard(_id);
   }
 
-  async function moveCard(payload, _id, list) {
+  async function moveCard(payload, _id, list, timeStamp) {
     console.log("move clicked");
-    RestDb.moveCard(setCards, payload, _id, list, cards);
+    RestDb.moveCard(setCards, payload, _id, list, cards, timeStamp);
   }
   async function editCard(
     payload,
@@ -74,41 +73,6 @@ export default function App() {
       cards
     );
   }
-  /*  async function editCard(
-    payload,
-    title,
-    list,
-    added,
-    assignedTo,
-    color,
-    category,
-    description,
-    _id
-  ) {
-    const title = title;
-    const list = list;
-    const assignedTo = assignedTo;
-    const color = color;
-    const category = category;
-    const description = description;
-    const id = _id; */
-  /* RestDb.editCard(
-      setCards,
-      payload,
-      title,
-      list,
-      added,
-      assignedTo,
-      color,
-      category,
-      description,
-      _id,
-      cards
-    ); 
-    console.log("sent to editCards " + JSON.stringify(payload));
-    console.log(cards);
-  }*/
-
   useEffect(() => {
     RestDb.getCards(setCards);
   }, []);
