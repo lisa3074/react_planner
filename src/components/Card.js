@@ -16,9 +16,17 @@ import { closeExpand } from "./modules/closeExpand";
 export default function Card(props) {
   console.log(props);
   const [list, setList] = useState("");
+  /*   const draggedTask = {}; */
   const listChanged = (e) => {
     setList(e.target.value);
     onClickMove(e.target.value);
+  };
+
+  const cardDragged = (e) => {
+    e.preventDefault();
+    console.log(props.header);
+    setList(props.header);
+    onClickMove(props.header);
   };
 
   function onClickMove(list) {
@@ -70,8 +78,21 @@ export default function Card(props) {
     left: "0",
   };
 
+  /*   function onDrag(event, header) {
+    event.preventDefault();
+    this.setState({
+      draggedTask: header,
+    });
+    console.log(header);
+  } */
+
   return (
-    <Panel className={"panelMargin smaller a" + props._id} data-state="hidden">
+    <Panel
+      className={"panelMargin smaller a" + props._id}
+      data-state="hidden"
+      /*  draggable
+      onDrag={cardDragged} */
+    >
       <li
         className={styles.card + " container"}
         id={"a" + props._id}

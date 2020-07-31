@@ -15,6 +15,7 @@ function List(props) {
       deleteCard={props.deleteCard}
       moveCard={props.moveCard}
       editCard={props.editCard}
+      header={props.header}
     />
   ));
 

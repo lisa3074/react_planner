@@ -2,13 +2,19 @@ import React from "react";
 import List from "./List";
 
 //The list container
-export default function Main({
-  cards,
-  onFormSubmit,
-  moveCard,
-  deleteCard,
-  editCard,
-}) {
+export default function Main(
+  { cards, onFormSubmit, moveCard, deleteCard, editCard },
+  props
+) {
+  /*   function onDragOver(event) {
+    event.preventDefault();
+  }
+  function onDrop(e) {
+    console.log("dropped");
+    e.preventDefault();
+    const targetHeader = props.header;
+    console.log(targetHeader);
+  } */
   return (
     <main className="Main">
       <section className="relativeContainer">
@@ -22,6 +28,8 @@ export default function Main({
           onFormSubmit={onFormSubmit}
           header="To Do"
           cards={cards.filter((c) => c.list === "To Do")}
+          /*    onDrop={onDrop}
+          onDragOver={(event) => onDragOver(event)} */
         />
         <List
           deleteCard={deleteCard}
@@ -30,6 +38,8 @@ export default function Main({
           onFormSubmit={onFormSubmit}
           header="Doing"
           cards={cards.filter((c) => c.list === "Doing")}
+          /*    onDrop={onDrop}
+          onDragOver={(event) => onDragOver(event)} */
         />
         <List
           deleteCard={deleteCard}
@@ -38,6 +48,8 @@ export default function Main({
           onFormSubmit={onFormSubmit}
           header="Done"
           cards={cards.filter((c) => c.list === "Done")}
+          /*       onDrop={onDrop}
+          onDragOver={(event) => onDragOver(event)} */
         />
       </section>
     </main>
