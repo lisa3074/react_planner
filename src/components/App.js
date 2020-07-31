@@ -44,9 +44,30 @@ export default function App() {
     RestDb.deleteCard(_id);
   }
 
-  async function moveCard(payload, _id, list, timeStamp) {
+  async function moveCard(payload, _id, list) {
     console.log("move clicked");
-    RestDb.moveCard(setCards, payload, _id, list, cards, timeStamp);
+    let newCards = cards.filter((c) => {
+      if (c._id === _id) {
+        c.list = list;
+        console.log(c);
+      }
+      return c;
+    });
+    setCards(newCards);
+    RestDb.moveCard(payload, _id);
+  }
+  async function dragCard(payload, _id, list, timeStamp) {
+    console.log("dragged");
+    console.log(list);
+    let newCards = cards.filter((c) => {
+      if (c._id === _id) {
+        c.list = list;
+        console.log(c);
+      }
+      return c;
+    });
+    setCards(newCards);
+    RestDb.dragCard(payload, _id, list, cards, timeStamp);
   }
   async function editCard(
     payload,
@@ -97,6 +118,7 @@ export default function App() {
         deleteCard={deleteCard}
         moveCard={moveCard}
         editCard={editCard}
+        dragCard={dragCard}
         cards={cards}
       />
     </div>

@@ -55,16 +55,14 @@ export async function deleteCard(_id) {
   });
 }
 
-export async function moveCard(callback, payload, _id, list, cards, timeStamp) {
-  // console.log(timeStamp);
-  let newCards = cards.filter((c) => {
+export async function moveCard(payload, _id) {
+  /*   let newCards = cards.filter((c) => {
     if (c._id === _id) {
       c.list = list;
     }
     return c;
   });
-  newCards = newCards.sort((a, b) => a.timeStamp - b.timeStamp);
-  console.log(newCards);
+  newCards = newCards.sort((a, b) => a.timeStamp - b.timeStamp); */
 
   const postData = JSON.stringify(payload);
   console.log(postData);
@@ -78,7 +76,31 @@ export async function moveCard(callback, payload, _id, list, cards, timeStamp) {
     body: postData,
   });
 
-  callback(newCards);
+  /*   callback(newCards); */
+}
+
+export async function dragCard(payload, _id, list, cards, timeStamp) {
+  /*   let newCards = cards.filter((c) => {
+    if (c._id === _id) {
+      c.list = list;
+    }
+    return c;
+  });
+  newCards = newCards.sort((a, b) => a.timeStamp - b.timeStamp); */
+
+  const postData = JSON.stringify(payload);
+  console.log(postData);
+  await fetch(`${restDB}/${_id}`, {
+    method: "put",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "x-apikey": apiKey,
+      "cache-control": "no-cache",
+    },
+    body: postData,
+  });
+  /* 
+  callback(newCards); */
 }
 async function editCard(
   callback,
@@ -139,4 +161,5 @@ export const RestDb = {
   postCard,
   deleteCard,
   editCard,
+  dragCard,
 };

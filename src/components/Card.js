@@ -14,7 +14,8 @@ import { closeExpand } from "./modules/closeExpand";
 //Another way (the one used) is to destructure at the preveous level: {...card}
 //the we can use props as well (props)
 export default function Card(props) {
-  console.log(props);
+  console.log(props.targetHeader);
+
   const [list, setList] = useState("");
   /*   const draggedTask = {}; */
   const listChanged = (e) => {
@@ -22,17 +23,30 @@ export default function Card(props) {
     onClickMove(e.target.value);
   };
 
-  const cardDragged = (e) => {
+  const cardDragged = (e, id) => {
     e.preventDefault();
-    console.log(props.header);
-    setList(props.header);
-    onClickMove(props.header);
+    console.log(props.targetHeader);
+    setList(props.targetHeader);
+    dragMove(id, props.targetHeader);
+    props.moveCardDrop(id, props.targetHeader);
   };
 
   function onClickMove(list) {
+    console.log(list);
+    console.log(props._id);
     props.moveCard(
       { _id: props._id, list: list, timeStamp: Date.now() },
       props._id,
+      list,
+      Date.now()
+    );
+  }
+  function dragMove(id, list) {
+    console.log(list);
+    console.log(id);
+    props.dragCard(
+      { _id: id, list: list, timeStamp: Date.now() },
+      id,
       list,
       Date.now()
     );
@@ -78,21 +92,14 @@ export default function Card(props) {
     left: "0",
   };
 
-  /*   function onDrag(event, header) {
-    event.preventDefault();
-    this.setState({
-      draggedTask: header,
-    });
-    console.log(header);
-  } */
-
   return (
     <Panel
       className={"panelMargin smaller a" + props._id}
       data-state="hidden"
-      /*  draggable
-      onDrag={cardDragged} */
-    >
+      draggable
+      onDrag={(e) => {
+        cardDragged(e, props._id);
+      }}>
       <li
         className={styles.card + " container"}
         id={"a" + props._id}
