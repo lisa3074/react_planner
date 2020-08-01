@@ -14,10 +14,9 @@ import { closeExpand } from "./modules/closeExpand";
 //Another way (the one used) is to destructure at the preveous level: {...card}
 //the we can use props as well (props)
 export default function Card(props) {
-  console.log(props.targetHeader);
+  /*   console.log(props.targetHeader); */
 
   const [list, setList] = useState("");
-  /*   const draggedTask = {}; */
   const listChanged = (e) => {
     setList(e.target.value);
     onClickMove(e.target.value);
@@ -28,7 +27,6 @@ export default function Card(props) {
     console.log(props.targetHeader);
     setList(props.targetHeader);
     dragMove(id, props.targetHeader);
-    props.moveCardDrop(id, props.targetHeader);
   };
 
   function onClickMove(list) {
@@ -55,7 +53,6 @@ export default function Card(props) {
     closeExpand(props._id);
     expand(props._id);
   }
-  console.log(props.color);
 
   const colorCat = {
     backgroundColor: props.color,
@@ -97,7 +94,7 @@ export default function Card(props) {
       className={"panelMargin smaller a" + props._id}
       data-state="hidden"
       draggable
-      onDrag={(e) => {
+      onDragEnd={(e) => {
         cardDragged(e, props._id);
       }}>
       <li

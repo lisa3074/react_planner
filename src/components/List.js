@@ -13,24 +13,15 @@ function List(props) {
 
   function onDrop(header) {
     console.log("dropped");
-    /* setTargetHeader(header); */
+    setTargetHeader(header);
     console.log(header);
     console.log(targetHeader);
-  }
-
-  function moveCardDrop(id, list) {
-    /*    props.cards.filter((c) => {
-      if (c._id === id) {
-        c.list = list;
-        console.log(c);
-      }
-      return c;
-    }); */
   }
 
   //running through the array (map), to get each entry by itself (like forEach)
   //For each card we place a <Card> with the data for this one card entry. We destructure the data before passing it {...card}
   //Here we are sending the whole entry (one card) to the Cards function, which then "appends" the child.
+
   const mappedCards = props.cards.map((card) => (
     <Card
       key={card._id}
@@ -41,7 +32,6 @@ function List(props) {
       dragCard={props.dragCard}
       header={props.header}
       targetHeader={targetHeader}
-      moveCardDrop={moveCardDrop}
     />
   ));
 
@@ -56,7 +46,7 @@ function List(props) {
         <h1 className="theList mui--text-display2">{props.header}</h1>
       </div>
 
-      <ul /* targetHeader={targetHeader} */>{mappedCards}</ul>
+      <ul>{mappedCards}</ul>
     </section>
   );
 }

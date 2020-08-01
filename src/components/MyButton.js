@@ -12,8 +12,6 @@ import { CirclePicker } from "react-color";
 
 export default function MyButton(props) {
   //here we destructure, so we get a variable and a function (clicks = var, setClickes = function)
-  console.log(props.id);
-
   function onClickDelete() {
     props.deleteCard(props.id);
   }
