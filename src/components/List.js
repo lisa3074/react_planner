@@ -11,12 +11,23 @@ function List(props) {
     e.preventDefault();
   }
 
-  function onDrop(header) {
+  /*   function onDrop(header) {
     console.log("dropped");
     setTargetHeader(header);
     console.log(header);
     console.log(targetHeader);
-  }
+  } */
+
+  let header = props.header;
+  const onDrop = () => {
+    console.log(header);
+    console.log(targetHeader);
+  };
+
+  React.useEffect(() => {
+    console.log(header);
+    setTargetHeader(header);
+  }, [header]);
 
   //running through the array (map), to get each entry by itself (like forEach)
   //For each card we place a <Card> with the data for this one card entry. We destructure the data before passing it {...card}
