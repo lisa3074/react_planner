@@ -10,6 +10,10 @@ export default function Main({
   editCard,
   dragCard,
 }) {
+  //drag and drop state. Declare the variable and updater function and send them to List, then send the variable to Card
+  //In List, call the function onDrop and change the state to the header of the list the card is dropped on. The use the variable in
+  //Card to set the list to whatever the variables state is.
+  const [dropList, setDropList] = React.useState("");
   return (
     <main className="Main">
       <section className="relativeContainer">
@@ -22,6 +26,8 @@ export default function Main({
           editCard={editCard}
           dragCard={dragCard}
           onFormSubmit={onFormSubmit}
+          setDropList={setDropList}
+          dropList={dropList}
           header="To Do"
           cards={cards.filter((c) => c.list === "To Do")}
         />
@@ -31,6 +37,8 @@ export default function Main({
           editCard={editCard}
           dragCard={dragCard}
           onFormSubmit={onFormSubmit}
+          setDropList={setDropList}
+          dropList={dropList}
           header="Doing"
           cards={cards.filter((c) => c.list === "Doing")}
         />
@@ -40,6 +48,8 @@ export default function Main({
           editCard={editCard}
           dragCard={dragCard}
           onFormSubmit={onFormSubmit}
+          setDropList={setDropList}
+          dropList={dropList}
           header="Done"
           cards={cards.filter((c) => c.list === "Done")}
         />

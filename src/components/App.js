@@ -5,6 +5,7 @@ import Main from "./Main";
 import { RestDb } from "./modules/restdb";
 import { init } from "./modules/mobNavigation";
 import { scroll } from "./modules/scroll";
+/* import "./wdyr"; */
 import "../sass/style.scss";
 import "../sass/form.scss";
 import "../sass/list.scss";
@@ -62,7 +63,7 @@ export default function App() {
     let newCards = cards.filter((c) => {
       if (c._id === _id) {
         c.list = list;
-        console.log(c);
+        /*        console.log(c); */
       }
       return c;
     });

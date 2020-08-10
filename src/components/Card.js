@@ -24,9 +24,8 @@ export default function Card(props) {
 
   const cardDragged = (e, id) => {
     e.preventDefault();
-    console.log(props.targetHeader);
-    setList(props.targetHeader);
-    dragMove(id, props.targetHeader);
+    setList(props.dropList);
+    dragMove(id, props.dropList);
   };
 
   function onClickMove(list) {
