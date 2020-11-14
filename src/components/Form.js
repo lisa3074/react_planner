@@ -113,6 +113,9 @@ export default function Form(props) {
   return (
     <>
       <form className="addForm" id="form" onSubmit={submit}>
+        <div className="bg">
+          <h2>ADD TASK</h2>
+        </div>
         <Input
           className="title"
           style={titleBorderStyle}
@@ -166,12 +169,7 @@ export default function Form(props) {
             name="Color"
           />
         </label>
-        <Select
-          className="list"
-          name="input"
-          label="List"
-          onChange={listChanged}
-          value={list}>
+        <Select className="list" name="input" label="List" onChange={listChanged} value={list}>
           <Option value="To Do" label="To Do" />
           <Option value="Doing" label="Doing" />
           <Option value="Done" label="Done" />
@@ -185,20 +183,11 @@ I SubmitButton.js bestemmes der så at knappen er disabled, hvis den er true og 
 Her er det kun nødvendigt at udfylde title og category */}
 
         <SubmitButton
-          name={
-            title.length === 0 || category.length === 0
-              ? "Not there yet"
-              : "Add task"
-          }
+          name={title.length === 0 || category.length === 0 ? "Not there yet" : "Add task"}
           disabled={title.length === 0 || category.length === 0}
         />
       </form>
-      <svg
-        style={succes}
-        height="100%"
-        viewBox="0 0 512 512"
-        width="100%"
-        xmlns="http://www.w3.org/2000/svg">
+      <svg style={succes} height="100%" viewBox="0 0 512 512" width="100%" xmlns="http://www.w3.org/2000/svg">
         <path
           d="m245.332031 341.332031c-4.09375 0-8.191406-1.554687-11.304687-4.691406l-69.335938-69.332031c-6.25-6.253906-6.25-16.386719 0-22.636719 6.253906-6.25 16.386719-6.25 22.636719 0l58.027344 58.027344 106.027343-106.027344c6.25-6.25 16.382813-6.25 22.632813 0s6.25 16.382813 0 22.636719l-117.332031 117.332031c-3.160156 3.136719-7.253906 4.691406-11.351563 4.691406zm0 0"
           className="succes-1"></path>

@@ -7,10 +7,7 @@ export default //navigation component
 function Nav(props) {
   return (
     <>
-      <nav className="Nav show">
-        <div className="bg">
-          <h2>ADD TASK</h2>
-        </div>
+      <nav className="Nav show hide">
         <Form header={props.header} onFormSubmit={props.onFormSubmit} />
       </nav>
       <MobNav />

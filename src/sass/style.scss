@@ -1,6 +1,30 @@
+@font-face {
+  font-family: "IBMPlexSans-Bold";
+  src: url("../fonts/IBMPlexSans-Bold.eot");
+  src: url("../fonts/IBMPlexSans-Bold.woff2") format("woff2"), url("../fonts/IBMPlexSans-Bold.woff") format("woff"),
+    url("../fonts/IBMPlexSans-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "IBMPlexSans-Medium";
+  src: url("../fonts/IBMPlexSans-Medium.eot");
+  src: url("../fonts/IBMPlexSans-Medium.woff2") format("woff2"), url("../fonts/IBMPlexSans-Medium.woff") format("woff"),
+    url("../fonts/IBMPlexSans-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "IBMPlexSans-Regular";
+  src: url("../fonts/IBMPlexSans-Regular.eot");
+  src: url("../fonts/IBMPlexSans-Regular.woff2") format("woff2"),
+    url("../fonts/IBMPlexSans-Regular.woff") format("woff"), url("../fonts/IBMPlexSans-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "IBMPlexSans-SemiBold";
+  src: url("../fonts/IBMPlexSans-SemiBold.eot");
+  src: url("../fonts/IBMPlexSans-SemiBold.woff2") format("woff2"),
+    url("../fonts/IBMPlexSans-SemiBold.woff") format("woff"),
+    url("../fonts/IBMPlexSans-SemiBold.ttf") format("truetype");
+}
+
 :root {
-  --primary-color: #878a8c;
-  --secondary-color: #d2d6d9;
   --third-color: #9fa3a6;
   --forth-color: #b0b9bf;
   --fifth-color: #f0f1f2;
@@ -9,22 +33,47 @@
   --dark: rgb(113, 113, 113);
   --red: rgb(196, 175, 175);
   --green: rgb(176, 196, 175);
-  --yellow: rgb(196, 195, 175);
   --danger-button: rgb(217 187 186);
   --disabled-button: rgb(192, 141, 141);
   --error: rgb(158 68 68);
   overflow: hidden;
+  //COLORS
+  --primary: #1ec69a;
+  --secondary: #384d62;
+  --tietery: #b0b2b5;
+  --background: #f3f7fc;
+  --dark-text: #222224;
+  --light-text: #9b9b9b;
+  --yellow: #f0c75d;
+  --orange: #d98c6a;
+  --chat-you: #eaecef;
+  --chat-me: #c9eee5;
+
+  //PLANNER COLORS
+
+  --orange-p: #fb6126;
+  --green-p: #41c1a0;
+  --purple-p: #8567b2;
+  --yellow-p: #b4b256;
+  --blue-p: #34d0d5;
+  --black-p: #222224;
+
+  //SHADOWS
+  --shadow-button: 2px 2px 3px #384d623f;
+  --shadow-image: 0px 1px 10px #384d626e;
+  --card-shadow: 0px 1px 15px #384d6228;
+
+  --border-radius: 10px;
+
+  //BUTTONS
+  --border-button: 20px;
+  --gradient: linear-gradient(0deg, rgba(30, 198, 154, 1) 0%, rgba(98, 189, 166, 1) 100%);
 }
 * {
   box-sizing: border-box;
 }
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   height: 100vh;
   width: 100vw;
 }
@@ -33,17 +82,9 @@ body {
   height: 100%;
   width: 100%;
 }
-p {
-  font-weight: 300;
-}
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
 
 .App {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
+  display: block;
   position: relative;
   top: 0;
   height: calc(var(--vh, 1vh) * 100);
@@ -51,11 +92,70 @@ code {
 }
 
 .Nav {
-  min-width: 300px;
-  position: relative;
-  height: calc((var(--vh, 1vh) * 100) - 5rem);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  height: calc(var(--vh, 1vh) * 100);
+  z-index: 100;
+  background-color: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .addForm {
+    max-width: 500px;
+    background-color: white;
+    height: 48rem;
+  }
 }
-
+h1 {
+  font-family: "IBMPlexSans-SemiBold";
+}
+h2 {
+  font-family: "IBMPlexSans-Bold";
+}
+h3 {
+  font-family: "IBMPlexSans-Medium";
+}
+p,
+label .MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated {
+  font-family: "IBMPlexSans-Regular";
+}
+button,
+button.MuiButton-root {
+  font-family: "IBMPlexSans-Medium";
+  color: white;
+  font-size: 0.85rem;
+  padding: 0.5rem 2.5rem;
+  border: none;
+  box-shadow: var(--shadow-button);
+  border-radius: var(--border-button);
+  letter-spacing: 0.5px;
+}
+.float-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  &:disabled {
+    filter: brightness(1.5) saturate(0.2);
+  }
+}
+.float-btn svg {
+  fill: white;
+  stroke: white;
+  stroke-width: 1px;
+}
+img {
+  box-shadow: var(--shadow-image);
+  border-radius: 50%;
+}
+.text-btn {
+  background-color: var(--primary);
+  background: var(--gradient);
+}
 nav h2 {
   padding: 0.8rem 0 0 2rem;
 }
@@ -163,5 +263,15 @@ label {
   }
   .relativeContainer {
     display: block;
+  }
+}
+@media (min-width: 1000px) {
+  .float-btn {
+    width: 50px;
+    height: 50px;
+    svg {
+      width: 30px;
+      height: 30px;
+    }
   }
 }
