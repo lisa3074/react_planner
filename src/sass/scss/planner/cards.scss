@@ -2,6 +2,13 @@
   margin: 0.1rem 0.3rem 0.5rem;
   border-radius: 10px;
 }
+.container {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  padding: 0.5rem 1rem;
+  padding-bottom: 0;
+}
 
 .container > header {
   cursor: pointer;

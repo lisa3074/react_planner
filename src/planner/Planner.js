@@ -1,35 +1,20 @@
 import React, { useState, useEffect } from "react";
-/* import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider"; */
-import Nav from "./Nav";
-import Main from "./Main";
+import NewTask from "./NewTask";
+import MainPlanner from "./MainPlanner";
 import { RestDb } from "./modules/restdb";
 import { init } from "./modules/mobNavigation";
 import { scroll } from "./modules/scroll";
-/* import "./wdyr"; */
-import "../sass/style.scss";
-import "../sass/form.scss";
-import "../sass/list.scss";
-import "../sass/edit.scss";
-import "../sass/cards.scss";
-import "../sass/animations.scss";
-import "../sass/navigation.scss";
-/* import EditForm from "./EditForm"; */
+import "../sass/scss/planner/style.scss";
+import "../sass/scss/planner/form.scss";
+import "../sass/scss/planner/list.scss";
+import "../sass/scss/planner/edit.scss";
+import "../sass/scss/planner/cards.scss";
+import "../sass/scss/planner/animations.scss";
+import "../sass/scss/planner/navigation.scss";
 
-/* import theme from "./theme"; */
-
-export default function App() {
+export default function Planner() {
   const [cards, setCards] = useState([]);
   scroll();
-  /*   function onFormSubmit(data) {
-    console.log("submitted", data);
-    //We make a new const (array) called "cards" (above).
-    //The updater function is called "setCards" and the initial value is our old array above; "myCards"
-    //in the callback, we have an event handler on the button, so when it's clicked this happens:
-    //We call the updater function "setCards", and in the function we take "myCards" array and creates a copy of it
-    //Then we tell the script to push the afterward entry into the end of the array. This is done by .concat
-    //the array now has 3 entries instead of the initial 2.
-    setCards(cards.concat(data));
-  } */
 
   //RestDb.function is a function imported from the restdb.js module
   async function onFormSubmit(data) {
@@ -70,30 +55,10 @@ export default function App() {
     setCards(newCards);
     RestDb.dragCard(payload, _id, list, cards, timeStamp);
   }
-  async function editCard(
-    payload,
-    _id,
-    title,
-    list,
-    assignedTo,
-    color,
-    category,
-    description
-  ) {
+  async function editCard(payload, _id, title, list, assignedTo, color, category, description) {
     console.log(_id);
     console.log("payload " + JSON.stringify(payload));
-    RestDb.editCard(
-      setCards,
-      payload,
-      _id,
-      title,
-      list,
-      assignedTo,
-      color,
-      category,
-      description,
-      cards
-    );
+    RestDb.editCard(setCards, payload, _id, title, list, assignedTo, color, category, description, cards);
   }
   useEffect(() => {
     RestDb.getCards(setCards);
@@ -112,16 +77,10 @@ export default function App() {
   }
 
   return (
-    <div className="App">
+    <div className="Planner">
       {cards === "" && <h1>LOADING</h1>}
-      <Nav onFormSubmit={onFormSubmit} />
-      <Main
-        deleteCard={deleteCard}
-        moveCard={moveCard}
-        editCard={editCard}
-        dragCard={dragCard}
-        cards={cards}
-      />
+      <NewTask onFormSubmit={onFormSubmit} />
+      <MainPlanner deleteCard={deleteCard} moveCard={moveCard} editCard={editCard} dragCard={dragCard} cards={cards} />
     </div>
   );
 }

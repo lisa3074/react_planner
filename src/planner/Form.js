@@ -5,7 +5,6 @@ import Option from "muicss/lib/react/option";
 import Select from "muicss/lib/react/select";
 import SubmitButton from "./SubmitButton";
 import { CirclePicker } from "react-color";
-/* import "../sass/form.scss"; */
 
 export default function Form(props) {
   const [title, setTitle] = useState("");
@@ -131,7 +130,6 @@ export default function Form(props) {
           style={catBorderStyle}
           className="category"
           label="Category"
-          /*   required={true} */
           floatingLabel={true}
           type="text"
           onFocus={catFocusChanged}

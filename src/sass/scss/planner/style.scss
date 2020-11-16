@@ -1,27 +1,30 @@
 @font-face {
   font-family: "IBMPlexSans-Bold";
-  src: url("../fonts/IBMPlexSans-Bold.eot");
-  src: url("../fonts/IBMPlexSans-Bold.woff2") format("woff2"), url("../fonts/IBMPlexSans-Bold.woff") format("woff"),
-    url("../fonts/IBMPlexSans-Bold.ttf") format("truetype");
+  src: url("../../../fonts/IBMPlexSans-Bold.eot");
+  src: url("../../../fonts/IBMPlexSans-Bold.woff2") format("woff2"),
+    url("../../../fonts/IBMPlexSans-Bold.woff") format("woff"),
+    url("../../../fonts/IBMPlexSans-Bold.ttf") format("truetype");
 }
 @font-face {
   font-family: "IBMPlexSans-Medium";
-  src: url("../fonts/IBMPlexSans-Medium.eot");
-  src: url("../fonts/IBMPlexSans-Medium.woff2") format("woff2"), url("../fonts/IBMPlexSans-Medium.woff") format("woff"),
-    url("../fonts/IBMPlexSans-Medium.ttf") format("truetype");
+  src: url("../../../fonts/IBMPlexSans-Medium.eot");
+  src: url("../../../fonts/IBMPlexSans-Medium.woff2") format("woff2"),
+    url("../../../fonts/IBMPlexSans-Medium.woff") format("woff"),
+    url("../../../fonts/IBMPlexSans-Medium.ttf") format("truetype");
 }
 @font-face {
   font-family: "IBMPlexSans-Regular";
-  src: url("../fonts/IBMPlexSans-Regular.eot");
-  src: url("../fonts/IBMPlexSans-Regular.woff2") format("woff2"),
-    url("../fonts/IBMPlexSans-Regular.woff") format("woff"), url("../fonts/IBMPlexSans-Regular.ttf") format("truetype");
+  src: url("../../../fonts/IBMPlexSans-Regular.eot");
+  src: url("../../../fonts/IBMPlexSans-Regular.woff2") format("woff2"),
+    url("../../../fonts/IBMPlexSans-Regular.woff") format("woff"),
+    url("../../../fonts/IBMPlexSans-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family: "IBMPlexSans-SemiBold";
-  src: url("../fonts/IBMPlexSans-SemiBold.eot");
-  src: url("../fonts/IBMPlexSans-SemiBold.woff2") format("woff2"),
-    url("../fonts/IBMPlexSans-SemiBold.woff") format("woff"),
-    url("../fonts/IBMPlexSans-SemiBold.ttf") format("truetype");
+  src: url("../../../fonts/IBMPlexSans-SemiBold.eot");
+  src: url("../../../fonts/IBMPlexSans-SemiBold.woff2") format("woff2"),
+    url("../../../fonts/IBMPlexSans-SemiBold.woff") format("woff"),
+    url("../../../fonts/IBMPlexSans-SemiBold.ttf") format("truetype");
 }
 
 :root {
@@ -83,7 +86,7 @@ body {
   width: 100%;
 }
 
-.App {
+.Planner {
   display: block;
   position: relative;
   top: 0;
@@ -91,7 +94,7 @@ body {
   padding-right: 1rem;
 }
 
-.Nav {
+.NewTask {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -245,7 +248,7 @@ label {
   display: none;
 }
 @media (max-width: 600px) {
-  .App {
+  .Planner {
     position: relative;
     overflow: hidden;
     display: block;
@@ -256,7 +259,7 @@ label {
     overflow: hidden;
   }
 
-  .Nav {
+  .NewTask {
     position: absolute;
     width: calc(100% - 40px);
     /*   height: 100%; */

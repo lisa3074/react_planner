@@ -11,12 +11,10 @@ export function done() {
   document.querySelector(".Done1").classList = "Done1 scrollList show";
   document.querySelector(".Doing1").classList = "Doing1 scrollList hidden";
   document.querySelector(".Do1").classList = "To Do1 scrollList hidden";
-  document.querySelector(".Nav").classList = "Nav hidden";
-  document
-    .querySelector(".Done1")
-    .addEventListener("transitionend", function () {
-      document.querySelector(".Done1").style.transform = "";
-    });
+  document.querySelector(".NewTask").classList = "NewTask hidden";
+  document.querySelector(".Done1").addEventListener("transitionend", function () {
+    document.querySelector(".Done1").style.transform = "";
+  });
   closeExpand();
 }
 
@@ -25,12 +23,10 @@ export function doing() {
   document.querySelector(".Done1").classList = "Done1 scrollList hidden";
   document.querySelector(".Doing1").classList = "Doing1 scrollList show";
   document.querySelector(".Do1").classList = "To Do1 scrollList hidden";
-  document.querySelector(".Nav").classList = "Nav hidden";
-  document
-    .querySelector(".Doing1")
-    .addEventListener("transitionend", function () {
-      document.querySelector(".Doing1").style.transform = "";
-    });
+  document.querySelector(".NewTask").classList = "NewTask hidden";
+  document.querySelector(".Doing1").addEventListener("transitionend", function () {
+    document.querySelector(".Doing1").style.transform = "";
+  });
   closeExpand();
 }
 export function todo() {
@@ -38,12 +34,10 @@ export function todo() {
   document.querySelector(".Done1").classList = "Done1 scrollList hidden";
   document.querySelector(".Doing1").classList = "Doing1 scrollList hidden";
   document.querySelector(".Do1").classList = "To Do1 scrollList show";
-  document.querySelector(".Nav").classList = "Nav hidden";
-  document
-    .querySelector(".To.Do1")
-    .addEventListener("transitionend", function () {
-      document.querySelector(".To.Do1").style.transform = "";
-    });
+  document.querySelector(".NewTask").classList = "NewTask hidden";
+  document.querySelector(".To.Do1").addEventListener("transitionend", function () {
+    document.querySelector(".To.Do1").style.transform = "";
+  });
   closeExpand();
 }
 export function addTask() {
@@ -51,9 +45,9 @@ export function addTask() {
   document.querySelector(".Done1").classList = "Done1 scrollList hidden";
   document.querySelector(".Doing1").classList = "Doing1 scrollList hidden";
   document.querySelector(".Do1").classList = "To Do1 scrollList hidden";
-  document.querySelector(".Nav").classList = "Nav show";
-  document.querySelector(".Nav").addEventListener("transitionend", function () {
-    document.querySelector(".Nav").style.transform = "";
+  document.querySelector(".NewTask").classList = "NewTask show";
+  document.querySelector(".NewTask").addEventListener("transitionend", function () {
+    document.querySelector(".NewTask").style.transform = "";
   });
   closeExpand();
 }
